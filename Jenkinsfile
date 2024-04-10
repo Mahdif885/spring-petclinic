@@ -5,7 +5,7 @@ pipeline {
             agent {         
                 docker {          
                     image 'maven:3.8.8'
-                    args '-v $HOME/.m2:/root/.m2'  // Mount volume for Maven repository
+                    args '-u root'
                 }       
             }       
             steps {
