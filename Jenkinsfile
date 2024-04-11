@@ -23,6 +23,9 @@ pipeline {
                     // Get the Jenkins container ID
                     def jenkinsContainerId = sh(script: 'docker ps -aqf "ancestor=jenkins/jenkins:lts"', returnStdout: true).trim()
 
+                    // Print the Jenkins container ID for debugging
+                    println "Jenkins container ID: ${jenkinsContainerId}"
+
                     // Copy the JAR file to the Jenkins container
                     sh "docker cp ${sourcePath} ${jenkinsContainerId}:${destinationPath}"
                 }
@@ -36,3 +39,4 @@ pipeline {
         }
     }
 }
+
