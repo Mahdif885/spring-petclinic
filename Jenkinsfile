@@ -6,6 +6,8 @@ pipeline {
                 docker {
                     image 'maven:3.8.8'
                     args '-u root'
+                    // Mount the directory containing the JAR file into the Docker container
+                    volumes ['/opt/jenkins_saves/workspace/springboot-petclinic/target:/opt/jenkins_saves/workspace/springboot-petclinic/target']
                 }
             }
             steps {
