@@ -3,10 +3,10 @@ pipeline {
   stages {
     // New Stage for Local JAR Copy (Option 1)
     stage('Copy JAR from Local') {
-      agent any  # This stage can run on any agent
+      agent any  
       steps {
         sh """
-          # Replace with the actual path to your JAR file
+        
           cp /opt/jenkins_saves/workspace/springboot-petclinic/target/spring-petclinic-3.2.0-SNAPSHOT.jar 192.168.100.10:/var/jenkins_home/workspace/springboot-petclinic/target/
 
         """
@@ -26,7 +26,7 @@ pipeline {
     }
     
     stage('Docker Build') {
-      agent any  # This stage can run on any agent
+      agent any  
       steps {
         sh """
           docker build -t shanem/spring-petclinic:latest .
