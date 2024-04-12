@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     // Define the source and destination paths
-                    def sourcePath = '/opt/jenkins_saves/workspace/springboot-petclinic/target/spring-petclinic-3.2.0-SNAPSHOT.jar'
+                    def sourcePath = '/var/jenkins_home/workspace/springboot-petclinic/target/spring-petclinic-3.2.0-SNAPSHOT.jar'
                     def destinationPath = '/home/spring-petclinic-3.2.0-SNAPSHOT.jar'
 
                     // Set the Jenkins container ID
