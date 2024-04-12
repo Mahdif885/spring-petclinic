@@ -20,8 +20,8 @@ pipeline {
                     def sourcePath = '/opt/jenkins_saves/workspace/springboot-petclinic/target/spring-petclinic-3.2.0-SNAPSHOT.jar'
                     def destinationPath = '/home/spring-petclinic-3.2.0-SNAPSHOT.jar'
 
-                    // Get the Jenkins container ID
-                    def jenkinsContainerId = sh(script: 'docker ps -aqf "ancestor=jenkins/jenkins:lts"', returnStdout: true).trim()
+                    // Set the Jenkins container ID
+                    def jenkinsContainerId = 'f062e31c4b47'
 
                     // Print the Jenkins container ID for debugging
                     println "Jenkins container ID: ${jenkinsContainerId}"
@@ -39,4 +39,5 @@ pipeline {
         }
     }
 }
+
 
