@@ -6,12 +6,15 @@ pipeline {
                 docker {
                     image 'maven:3.8.8'
                     args '-u root'
-                    // Mount the directory containing the JAR file into the Docker container
-                    volumes ['/opt/jenkins_saves/workspace/springboot-petclinic/target:/opt/target']
                 }
             }
             steps {
-                sh 'mvn clean install'
+                script {
+                    // Copy the JAR file into the Docker container
+                    sh 'docker cp /opt/jenkins_saves/workspace/springboot-petclinic/target/spring-petclinic-3.2.0-SNAPSHOT.jar $(docker ps -q -f name=maven)'
+                    // Run Maven build
+                    sh 'mvn clean install'
+                }
             }
         }
         stage('Docker Build') {
